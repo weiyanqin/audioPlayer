@@ -21,7 +21,6 @@ html,body,section{
 }
 .layout{
     width: 600px;
-    border:1px solid red;
     margin: 0 auto;
 }
 @media(min-width: 700px){
@@ -78,7 +77,6 @@ main .aside{
 main .aside figure{
     width: 46vh;
     height: 46vh;
-    border: 1px solid red;
     background-image: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-big);
     background-size: cover;
     background-position: center center;
@@ -100,7 +98,6 @@ main .aside .actions .iconfont:hover{
 }
 main .detail {
     margin-left: 56vh;
-    border: 1px solid red;
     color: #fff;
 }
 main .detail .tag{
@@ -185,7 +182,6 @@ footer .layout .box ul li{
     float: left;
     margin: 2vh 2vh 0 2vh;
     width: 20vh;
-    border: 1px solid red;
     height: 20vh;
     text-align: center;
     cursor: pointer;
@@ -227,10 +223,10 @@ footer .icon-left{
 footer .icon-right{
     right: -8vh;
 }
-.boomText{
+/* .boomText{
     display: inline-block;
     opacity: 0;
-}
+} */
 
 
 

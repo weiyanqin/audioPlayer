@@ -147,12 +147,10 @@ var fm = {
     },
     loadMusic: function(callback){
         var _this = this
-        console.log('loadmusic...')
         $.getJSON('//jirenguapi.applinzi.com/fm/getSong.php',{channel: this.channelId})
         .done(function(ret){
             console.log(ret)
             _this.song = ret['song']['0']
-            console.log(_this.song)
             callback()
             _this.loadLyric()
         })
@@ -161,16 +159,13 @@ var fm = {
         var _this = this
         $.getJSON('//jirenguapi.applinzi.com/fm/getLyric.php',{sid: this.song.sid})
         .done(function(ret){
-            console.log(ret)
-            console.log(ret.lyric)
             var lyric = ret.lyric
             var lyricObj = {}
-            console.log(lyric.split('\n'))
             lyric.split('\n').forEach(function(line){
+                console.log(lyric.split('\n'))
                 var times = line.match(/\d{2}:\d{2}/g)
-                console.log(times)
                 var str = line.replace(/\[.+?\]/g, '')
-                console.log(str)
+                console.log(times)
                 if(Array.isArray(times)){
                     times.forEach(function(time){
                     lyricObj[time] = str
@@ -178,10 +173,10 @@ var fm = {
                 }
             })
             _this.lyricObj = lyricObj
+            console.log(lyricObj)
         })
     },
     setMusic:function(){
-        console.log('setMusic...')
         console.log(this.song)
         this.audio.src = this.song.url
         $('.bg').css('background-image','url(' + this.song.picture + ')')
@@ -199,9 +194,11 @@ var fm = {
         this.$container.find('.current-time').text(min+':'+second)
         this.$container.find('.bar-progress').css('width',(this.audio.currentTime / this.audio.duration*100+'%'))
         console.log(this.audio.duration)
-        var line = this.lyricObj['0' + min + ':' + second]
+        var line = this.lyricObj['0'+min+':'+second]
+        console.log(line)
         if(line){
             this.$container.find('.lyric p').text(line)
+            .boomText()
         }
     }
 }
